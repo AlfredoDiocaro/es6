@@ -1,38 +1,38 @@
 $(document).ready(function () {
 
     var counter = 1,
-    x = ['ciao', 417, false],
-    myArr = [1, 2, 3, 4, 5, ...x];
+        x = ['ciao', 417, false],
+        myArr = [1, 2, 3, 4, 5, ...x];
 
     var moltiplicazione = (...multipli) => {
         let temp = multipli[0];
-        for(let num = 1; num < multipli.length; num++){
-            temp = temp * multipli[num]; 
+        for (let num = 1; num < multipli.length; num++) {
+            temp = temp * multipli[num];
         }
         return temp;
     }
     // Funzione anonima, interpretata al momento dell invocazione/esecuzione 'somma()', dichiarata come un OGGETTO.
     var somma = (...addendi) => {
         let temp = 0;
-        for(let num of addendi){
-            temp += num; 
+        for (let num of addendi) {
+            temp += num;
         }
         return temp;
     }
     // Funzione dichiarata, interpretata prima dell'esecuzione di altro codice, il browser
     // automaticamente legge tutte le named al caricamento.
-    function sum(...addendi){
+    function sum(...addendi) {
         let temp = 0;
-        for(let num of addendi){
-            temp += num; 
+        for (let num of addendi) {
+            temp += num;
         }
         return temp;
     }
 
 
-    console.log("anonymous function somma: " + somma(5,4,5,2,4));
-    console.log("named function somma: " + sum(5,4,5,2,4));
-    console.log(moltiplicazione(5,4,5,2));
+    console.log("anonymous function somma: " + somma(5, 4, 5, 2, 4));
+    console.log("named function somma: " + sum(5, 4, 5, 2, 4));
+    console.log(moltiplicazione(5, 4, 5, 2));
 
 
     /**
@@ -51,7 +51,7 @@ $(document).ready(function () {
     });
 
     //anonima: interpretata all'invocazione di 'premi()'
-    var premi = function(){
+    var premi = function () {
         $("#mioInput").keyup(function (event) {
             if (event.keyCode == 13) {
                 $(".mioBottone").click();
@@ -72,38 +72,38 @@ $(document).ready(function () {
         lista.aggiungi();
     });
 
-        //normale
-        function listGest(index){
-            $('.listElem'+index).on('mouseover',function(){
-    
-                $('.delete'+index).css('display','inline-block');
-    
-            }).on('mouseout',function(){
-    
-                $('.delete'+index).css('display','none');
-    
-            }).on('click',myArr ,function(e){
-                console.log(e);
-            });
-        }
-        //anonima
-        var gestList = function(index){
-            $('.listElem'+index).on('mouseover',function(){
-    
-                $('.delete'+index).css('display','inline-block');
-    
-            }).on('mouseout',function(){
-    
-                $('.delete'+index).css('display','none');
-    
-            }).on('click',myArr ,function(e){
-                console.log(e);
-            });
-        }
+    //normale
+    function listGest(index) {
+        $('.listElem' + index).on('mouseover', function () {
 
+            $('.delete' + index).css('display', 'inline-block');
 
+        }).on('mouseout', function () {
+
+            $('.delete' + index).css('display', 'none');
+
+        }).on('click', myArr, function (e) {
+            console.log(e);
+        });
+    }
+    //anonima
+    var gestList = function (index) {
+        $('.listElem' + index).on('mouseover', function () {
+
+            $('.delete' + index).css('display', 'inline-block');
+
+        }).on('mouseout', function () {
+
+            $('.delete' + index).css('display', 'none');
+
+        }).on('click', myArr, function (e) {
+            console.log(e);
+        });
+    }
+
+    //Revealing module pattern
     var lista = (function () {
-        
+
         // private members
         function eliminaValore(number) {
             /* alternativa brutale
@@ -138,10 +138,6 @@ $(document).ready(function () {
 
         }
 
-        function helpers(){
-            
-        }
-
         // public members
         return {
             //Alias: Nome Funzione
@@ -149,5 +145,5 @@ $(document).ready(function () {
             rimuovi: eliminaValore
         };
     })();
-    
+
 })
