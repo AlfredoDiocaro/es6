@@ -11,6 +11,15 @@ $(document).ready(function () {
         }
         return temp;
     }
+
+    var divisione =(...divisori)=>{
+    let dividendo=divisori[0];
+    for(i=1;i<divisori.length;i++){
+
+        dividendo=dividendo/divisori[i];
+    }
+        return dividendo;
+    }
     // Funzione anonima, interpretata al momento dell invocazione/esecuzione 'somma()', dichiarata come un OGGETTO.
     var somma = (...addendi) => {
         let temp = 0;
@@ -18,6 +27,15 @@ $(document).ready(function () {
             temp += num;
         }
         return temp;
+    }
+
+    var sottrazione = (...protagonisti) => {
+        let iniz= protagonisti[0];
+        for(var i=1;i< protagonisti.length;i++){
+            iniz-=protagonisti[i];
+
+        }
+            return iniz;
     }
     // Funzione dichiarata, interpretata prima dell'esecuzione di altro codice, il browser
     // automaticamente legge tutte le named al caricamento.
@@ -28,8 +46,17 @@ $(document).ready(function () {
         }
         return temp;
     }
+    function diff(...protagonisti) {
+        let iniz= protagonisti[0];
+        for(var i=1;i< protagonisti.length;i++){
+            iniz-=protagonisti[i];
 
-
+        }
+            return iniz;
+    }
+    console.log("divisione "+divisione(100,5,4));
+    console.log("sottrazione dichiarata "+diff(20,7,6));
+    console.log("sottrazione anonima "+sottrazione(10,7,6));
     console.log("anonymous function somma: " + somma(5, 4, 5, 2, 4));
     console.log("named function somma: " + sum(5, 4, 5, 2, 4));
     console.log(moltiplicazione(5, 4, 5, 2));
